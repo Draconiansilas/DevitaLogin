@@ -1,10 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:login1/loginpage.dart';
+import 'package:login1/pages/loginpage.dart';
+import 'package:login1/pages/homepage.dart';
+import 'package:login1/pages/splash.dart';
 
 void main() {
   runApp(MyApp());
 }
+
+// Widget cpage = LoginPage();
+// @override
+// Future<void> onInit() async {
+//   late SharedPreferences sharedPreferences;
+//   sharedPreferences = await SharedPreferences.getInstance();
+//   (sharedPreferences.getString("token") == null)
+//       ? cpage = LoginPage()
+//       : cpage = MyHomePage();
+// }
 
 class MyApp extends StatelessWidget {
   @override
@@ -16,10 +28,13 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: LoginPage(),
-      initialRoute: "/",
+      home: Splash(),
+      // LoginPage(),
+      initialRoute: "/splash",
       getPages: [
         GetPage(name: "/", page: () => LoginPage()),
+        GetPage(name: "/MyHomePage", page: () => MyHomePage()),
+        GetPage(name: "/splash", page: () => Splash()),
       ],
     );
   }
